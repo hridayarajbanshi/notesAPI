@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cli-color": "^2.0.3"
+    "bcrypt": "^5.1.1",
+    "cli-color": "^2.0.3",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
