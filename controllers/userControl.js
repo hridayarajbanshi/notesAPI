@@ -1,5 +1,4 @@
 const userModal = require("../models/user");
-// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SERECT_KEY = "NOTESAPI";
 const register = async (req, res) =>{
@@ -8,9 +7,7 @@ const register = async (req, res) =>{
     const existUser = await userModal.findOne({email: email});
     if(existUser){
       res.status(400).json({message: "User already exist"});
-    }
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    
+    }    
     const result = await userModal.create({
       username: username,
        password: password,
