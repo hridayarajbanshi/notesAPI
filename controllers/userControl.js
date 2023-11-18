@@ -1,5 +1,4 @@
 const userModal = require("../models/user");
-// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SERECT_KEY = "NOTESAPI";
 const register = async (req, res) =>{
