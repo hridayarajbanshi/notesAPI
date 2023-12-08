@@ -3,6 +3,15 @@ const app = express();
 const posts = require("./posts.json");
 const mongoose = require("mongoose");
 app.use(express.json());
+
+app.use((req, res, next)=> {
+  console.log("HTTP " + req.method + " " + req.url);
+  next();
+
+})
+
+
+
 app.use("/users", require("./routes/user"));
 app.use("/notes", require("./routes/notes"));
 app.get('/', (req, res) => {

@@ -8,8 +8,7 @@ const register = async (req, res) =>{
     if(existUser){
       return res.status(400).json({message: "User already exist"});
     }
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    
+   
     const result = await userModal.create({
       username: username,
        password: password,
@@ -27,7 +26,27 @@ const register = async (req, res) =>{
   }
 }
 
-const signIn = (req, res) =>{
+const signIn = async (req, res) =>{
+  const {email, password} = req.body;
+  try{
+    const existUser = await userModal.findOne({email: email});
+    if(!existUser){
+      return res.status(404).json({message: "User not found"});
+    }
+   
+  
+    const token = jwt.sign(
+      {email: existUser.email, id: existUser._id},SERECT_KEY,)
+      return res.status(200).json({user: existUser, token: token});
+
+
+
+  }catch(error){
+    console.log(error);
+    return res.status(500).json({message: "Something went wrong"});
+
+
+  }
 
 }
 module.exports = {register, signIn};
