@@ -37,7 +37,9 @@ const signIn = async (req, res) =>{
   
     const token = jwt.sign(
       {email: existUser.email, id: existUser._id},SERECT_KEY,)
+      res.setHeader("authorization", token);
       return res.status(200).json({user: existUser, token: token});
+      
 
 
 
