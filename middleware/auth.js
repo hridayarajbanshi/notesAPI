@@ -3,7 +3,11 @@ const SERECT_KEY = "NOTESAPI";
 
 const auth =  (req, res, next)=> {
   try {
-    let token = req.headers.authorization;
+    console.log(req.headers);
+
+    
+    let token = req.headers['authorization']
+    
     console.log(token)
     if(token){
       token = token.split(" ")[1];
