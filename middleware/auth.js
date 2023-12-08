@@ -6,7 +6,7 @@ const auth = async (req, res, next)=> {
    
 
     
-    let token = req.headers['authorizaion'] || req.headers.authorizaion;
+    let token = req.headers['authorization'] || req.headers.authorization;
     
     console.log(token)
     if(token){
