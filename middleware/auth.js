@@ -3,15 +3,15 @@ const SERECT_KEY = "NOTESAPI";
 
 const auth =  (req, res, next)=> {
   try {
-    let token = req.headers.authorization.split(" ")[1];
+    let token = req.headers.authorization;
     if(token){
-      return token;
+      token = token.split(" ")[1];
       let user = jwt.verify(token, SERECT_KEY);
       req.userId = user.id;
+      return token;
     }
     else{
-      return res.status(401).json({message: "Auth failed"});
-    
+      return res.status(401).json({message: "Aut failed"});
     }
     next();
   } catch (error) {
