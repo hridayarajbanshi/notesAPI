@@ -3,11 +3,7 @@ const SERECT_KEY = "NOTESAPI";
 
 const auth = async (req, res, next)=> {
   try {
-   
-
-    
     let token = req.headers['authorization'] || req.headers.authorization;
-    
     console.log(token)
     if(token){
      
